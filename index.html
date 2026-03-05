@@ -1,528 +1,209 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gabriel Arjona — Technology & Engineering</title>
+  <title>Gabriel Arjona — Industrial Engineering & Technology</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #f8f7f4;
-      --white: #ffffff;
-      --surface: #f2f1ee;
-      --surface2: #eae9e5;
-      --border: #dddbd6;
-      --border2: #c8c6c0;
-      --navy: #1a2332;
-      --navy2: #243044;
-      --accent: #1d4ed8;
-      --accent-light: #eff4ff;
-      --text: #1a2332;
-      --text2: #3d4a5c;
-      --muted: #6b7585;
-      --muted2: #8e97a6;
+      --bg: #f8f7f4; --white: #ffffff; --surface: #f2f1ee;
+      --border: #dddbd6; --border2: #c8c6c0;
+      --navy: #1a2332; --navy2: #243044;
+      --accent: #1d4ed8; --accent-light: #eff4ff;
+      --text: #1a2332; --text2: #3d4a5c;
+      --muted: #6b7585; --muted2: #8e97a6;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+```
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+  background: rgba(248,247,244,0.94); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--navy); }
+.nav-cta { background: var(--navy) !important; color: #fff !important; padding: 8px 20px; border-radius: 2px; }
+
+/* HERO */
+#home { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 60px 80px; }
+.hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.hero-eyebrow-line { width: 32px; height: 1px; background: var(--accent); }
+.hero-eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(44px, 4.5vw, 68px); font-weight: 700; line-height: 1.08; letter-spacing: -1.5px; color: var(--navy); margin-bottom: 24px; }
+h1 em { font-style: italic; color: var(--accent); }
+.hero-description { font-size: 16px; color: var(--text2); max-width: 460px; line-height: 1.75; margin-bottom: 44px; font-weight: 300; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; padding: 14px 30px; border-radius: 2px; font-size: 12px; font-weight: 600; text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+.btn-primary:hover { background: var(--navy2); transform: translateY(-1px); }
+.btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text2); padding: 14px 30px; border-radius: 2px; border: 1px solid var(--border2); font-size: 12px; font-weight: 500; text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+.btn-outline:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+
+.hero-right { background: var(--navy); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px; }
+.hero-pattern { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+.hero-glow { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,78,216,0.28) 0%, transparent 65%); top: -120px; right: -120px; }
+.hero-card { position: relative; z-index: 2; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 36px; backdrop-filter: blur(10px); }
+.hero-card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+.hero-card-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.hero-card-title { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+.hero-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); }
+.hero-stat { background: rgba(255,255,255,0.04); padding: 18px 20px; }
+.hero-stat-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.32); letter-spacing: 0.06em; }
+.hero-badge { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: rgba(29,78,216,0.2); border: 1px solid rgba(29,78,216,0.4); color: #93b4f5; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 14px; border-radius: 2px; }
+.hero-badge::before { content:''; width:6px; height:6px; background: #4f9ef7; border-radius:50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* SECTIONS */
+.section-wrap { padding: 96px 60px; max-width: 1200px; margin: 0 auto; }
+.section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 2.8vw, 40px); font-weight: 700; color: var(--navy); letter-spacing: -1px; line-height: 1.1; }
+.section-num { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 700; color: var(--border); line-height: 1; letter-spacing: -3px; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: start; }
+.about-text p { color: var(--text2); font-weight: 300; line-height: 1.85; margin-bottom: 18px; font-size: 16px; }
+.about-text p strong { color: var(--navy); font-weight: 600; }
+.about-aside { display: flex; flex-direction: column; gap: 2px; }
+.about-aside-item { background: var(--surface); border: 1px solid var(--border); padding: 20px 24px; }
+.about-aside-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 5px; }
+.about-aside-value { font-size: 15px; color: var(--navy); font-weight: 500; }
+.about-aside-value small { font-size: 13px; color: var(--muted); font-weight: 400; }
+
+/* EXPERIENCE */
+.timeline { display: flex; flex-direction: column; }
+.timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 40px; padding: 40px 0; border-bottom: 1px solid var(--border); }
+.timeline-item:first-child { border-top: 1px solid var(--border); }
+.timeline-date { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 8px; }
+.timeline-badge { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 1px; }
+.timeline-role { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 3px; letter-spacing: -0.3px; }
+.timeline-company { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+.timeline-desc { font-size: 15px; color: var(--text2); font-weight: 300; line-height: 1.75; max-width: 600px; }
+
+/* EDUCATION */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.edu-card { background: var(--white); border: 1px solid var(--border); padding: 32px 28px; transition: box-shadow 0.2s; }
+.edu-card:hover { box-shadow: 0 4px 24px rgba(26,35,50,0.07); }
+.edu-years { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.edu-degree { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+.edu-school { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.edu-desc { font-size: 13px; color: var(--text2); font-weight: 300; line-height: 1.65; }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.skill-category { background: var(--surface); border: 1px solid var(--border); padding: 30px 26px; }
+.skill-cat-icon { font-size: 20px; margin-bottom: 12px; }
+.skill-cat-title { font-size: 11px; font-weight: 700; color: var(--navy); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-tag { font-size: 12px; color: var(--text2); background: var(--white); border: 1px solid var(--border); padding: 5px 12px; border-radius: 1px; font-weight: 400; transition: border-color 0.2s, color 0.2s; }
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+.skill-tag.highlight { background: var(--accent-light); border-color: rgba(29,78,216,0.2); color: var(--accent); font-weight: 500; }
+
+/* CERTS */
+.cert-table { margin-top: 48px; }
+.cert-row { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+.cert-row:first-child { border-top: 1px solid var(--border); }
+.cert-num { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--muted2); width: 24px; flex-shrink: 0; }
+.cert-name { font-weight: 600; color: var(--navy); font-size: 15px; }
+.cert-issuer { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.cert-link { margin-left: auto; font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: opacity 0.2s; white-space: nowrap; }
+.cert-link:hover { opacity: 0.65; }
+
+/* CONTACT */
+.contact-wrap { max-width: 1200px; margin: 0 auto; padding: 96px 60px; }
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.contact-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 10px; }
+.contact-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3vw, 48px); font-weight: 700; color: #fff; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px; }
+.contact-subtitle { font-size: 15px; color: rgba(255,255,255,0.42); font-weight: 300; line-height: 1.75; margin-bottom: 40px; }
+.contact-links { display: flex; flex-direction: column; }
+.contact-link { display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.contact-link:hover { color: #fff; }
+.contact-link-icon { width: 38px; height: 38px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.45); flex-shrink: 0; }
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-group label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.28); text-transform: uppercase; letter-spacing: 0.15em; }
+.form-group input, .form-group textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 2px; outline: none; transition: border-color 0.2s; resize: vertical; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.18); }
+.form-group input:focus, .form-group textarea:focus { border-color: rgba(29,78,216,0.6); }
+.btn-light { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--navy); padding: 14px 28px; border-radius: 2px; font-size: 12px; font-weight: 700; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; align-self: flex-start; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+.btn-light:hover { background: var(--bg); transform: translateY(-1px); }
+
+/* FOOTER */
+footer { background: #111827; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.35); text-decoration: none; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.65); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  #home { grid-template-columns: 1fr; }
+  .hero-left { padding: 110px 24px 48px; }
+  .hero-right { min-height: 340px; padding: 36px; }
+  .section-wrap, .contact-wrap { padding: 64px 24px; }
+  .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+  footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+```
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 60px;
-      height: 68px;
-      background: rgba(248,247,244,0.94);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--accent); }
-
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--navy); }
-
-    .nav-cta {
-      background: var(--navy) !important;
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-    }
-
-    /* ── HERO ── */
-    #home {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 120px 60px 80px;
-    }
-
-    .hero-eyebrow {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .hero-eyebrow-line { width: 32px; height: 1px; background: var(--accent); }
-
-    .hero-eyebrow-text {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(44px, 4.5vw, 68px);
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -1.5px;
-      color: var(--navy);
-      margin-bottom: 24px;
-    }
-
-    h1 em { font-style: italic; color: var(--accent); }
-
-    .hero-description {
-      font-size: 16px;
-      color: var(--text2);
-      max-width: 460px;
-      line-height: 1.75;
-      margin-bottom: 44px;
-      font-weight: 300;
-    }
-
-    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--navy); color: #fff;
-      padding: 14px 30px; border-radius: 2px;
-      font-size: 12px; font-weight: 600;
-      text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-primary:hover { background: var(--navy2); transform: translateY(-1px); }
-
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--text2);
-      padding: 14px 30px; border-radius: 2px;
-      border: 1px solid var(--border2);
-      font-size: 12px; font-weight: 500;
-      text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase;
-      transition: border-color 0.2s, color 0.2s, transform 0.15s;
-    }
-
-    .btn-outline:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
-
-    .hero-right {
-      background: var(--navy);
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 60px;
-    }
-
-    .hero-pattern {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-
-    .hero-glow {
-      position: absolute;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(29,78,216,0.28) 0%, transparent 65%);
-      top: -120px; right: -120px;
-    }
-
-    .hero-card {
-      position: relative; z-index: 2;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 3px; padding: 36px;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-card-label {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.35); margin-bottom: 18px;
-    }
-
-    .hero-card-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700;
-      color: #fff; margin-bottom: 4px;
-    }
-
-    .hero-card-title { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
-
-    .hero-card-stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: rgba(255,255,255,0.08);
-    }
-
-    .hero-stat { background: rgba(255,255,255,0.04); padding: 18px 20px; }
-
-    .hero-stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px; font-weight: 700;
-      color: #fff; line-height: 1; margin-bottom: 4px;
-    }
-
-    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.32); letter-spacing: 0.06em; }
-
-    .hero-badge {
-      margin-top: 20px;
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(29,78,216,0.2);
-      border: 1px solid rgba(29,78,216,0.4);
-      color: #93b4f5;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 7px 14px; border-radius: 2px;
-    }
-
-    .hero-badge::before {
-      content:''; width:6px; height:6px;
-      background: #4f9ef7; border-radius:50%;
-      animation: blink 2s infinite;
-    }
-
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    /* ── SECTIONS ── */
-    .section-wrap { padding: 96px 60px; max-width: 1200px; margin: 0 auto; }
-
-    .section-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 56px; padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 2.8vw, 40px);
-      font-weight: 700; color: var(--navy);
-      letter-spacing: -1px; line-height: 1.1;
-    }
-
-    .section-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 72px; font-weight: 700;
-      color: var(--border); line-height: 1; letter-spacing: -3px;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid; grid-template-columns: 1.2fr 0.8fr;
-      gap: 80px; align-items: start;
-    }
-
-    .about-text p {
-      color: var(--text2); font-weight: 300;
-      line-height: 1.85; margin-bottom: 18px; font-size: 16px;
-    }
-
-    .about-text p strong { color: var(--navy); font-weight: 600; }
-
-    .about-aside { display: flex; flex-direction: column; gap: 2px; }
-
-    .about-aside-item {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 20px 24px;
-    }
-
-    .about-aside-label {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--muted2); margin-bottom: 5px;
-    }
-
-    .about-aside-value { font-size: 15px; color: var(--navy); font-weight: 500; }
-
-    /* ── EXPERIENCE ── */
-    .timeline { display: flex; flex-direction: column; }
-
-    .timeline-item {
-      display: grid; grid-template-columns: 180px 1fr;
-      gap: 40px; padding: 40px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .timeline-item:first-child { border-top: 1px solid var(--border); }
-
-    .timeline-date { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 8px; }
-
-    .timeline-badge {
-      display: inline-block;
-      background: var(--accent-light); color: var(--accent);
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 1px;
-    }
-
-    .timeline-role {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px; font-weight: 700; color: var(--navy);
-      margin-bottom: 4px; letter-spacing: -0.3px;
-    }
-
-    .timeline-company { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
-
-    .timeline-desc { font-size: 15px; color: var(--text2); font-weight: 300; line-height: 1.75; max-width: 600px; }
-
-    /* ── SKILLS ── */
-    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-
-    .skill-category { background: var(--surface); border: 1px solid var(--border); padding: 32px 28px; }
-
-    .skill-cat-icon { font-size: 20px; margin-bottom: 14px; }
-
-    .skill-cat-title {
-      font-size: 11px; font-weight: 700; color: var(--navy);
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 18px; padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    .skill-tag {
-      font-size: 12px; color: var(--text2);
-      background: var(--white); border: 1px solid var(--border);
-      padding: 5px 12px; border-radius: 1px; font-weight: 400;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
-
-    .cert-table { margin-top: 48px; }
-
-    .cert-row {
-      display: flex; align-items: center; gap: 20px;
-      padding: 20px 0; border-bottom: 1px solid var(--border);
-    }
-
-    .cert-row:first-child { border-top: 1px solid var(--border); }
-
-    .cert-num { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--muted2); width: 24px; flex-shrink: 0; }
-
-    .cert-name { font-weight: 600; color: var(--navy); font-size: 15px; }
-
-    .cert-issuer { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-    .cert-link {
-      margin-left: auto;
-      font-size: 12px; font-weight: 600; color: var(--accent);
-      text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-
-    .cert-link:hover { opacity: 0.65; }
-
-    /* ── PROJECTS ── */
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-
-    .project-card {
-      background: var(--white); border: 1px solid var(--border);
-      padding: 40px 36px; position: relative;
-      transition: box-shadow 0.25s, transform 0.25s;
-    }
-
-    .project-card:hover { box-shadow: 0 8px 40px rgba(26,35,50,0.08); transform: translateY(-2px); }
-
-    .project-num { font-family: 'Playfair Display', serif; font-size: 11px; color: var(--muted2); letter-spacing: 0.1em; margin-bottom: 20px; }
-
-    .project-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
-
-    .project-desc { font-size: 14px; color: var(--text2); font-weight: 300; line-height: 1.75; margin-bottom: 24px; }
-
-    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    .project-tag {
-      font-size: 11px; color: var(--accent);
-      background: var(--accent-light); border: 1px solid rgba(29,78,216,0.12);
-      padding: 4px 10px; border-radius: 1px;
-      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    }
-
-    /* ── CONTACT ── */
-    #contact-section { background: var(--navy); }
-
-    .contact-wrap { max-width: 1200px; margin: 0 auto; padding: 96px 60px; }
-
-    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-
-    .contact-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 10px; }
-
-    .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3vw, 48px); font-weight: 700; color: #fff; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px; }
-
-    .contact-subtitle { font-size: 15px; color: rgba(255,255,255,0.42); font-weight: 300; line-height: 1.75; margin-bottom: 40px; }
-
-    .contact-links { display: flex; flex-direction: column; }
-
-    .contact-link {
-      display: flex; align-items: center; gap: 14px;
-      color: rgba(255,255,255,0.55); text-decoration: none;
-      font-size: 14px; font-weight: 400;
-      transition: color 0.2s; padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .contact-link:hover { color: #fff; }
-
-    .contact-link-icon {
-      width: 38px; height: 38px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 2px; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 600;
-      color: rgba(255,255,255,0.45); flex-shrink: 0;
-    }
-
-    .contact-form { display: flex; flex-direction: column; gap: 14px; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-    .form-group { display: flex; flex-direction: column; gap: 7px; }
-
-    .form-group label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.28); text-transform: uppercase; letter-spacing: 0.15em; }
-
-    .form-group input, .form-group textarea {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff; padding: 12px 16px;
-      font-family: 'Inter', sans-serif; font-size: 14px;
-      border-radius: 2px; outline: none;
-      transition: border-color 0.2s; resize: vertical;
-    }
-
-    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.18); }
-
-    .form-group input:focus, .form-group textarea:focus { border-color: rgba(29,78,216,0.6); }
-
-    .btn-light {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #fff; color: var(--navy);
-      padding: 14px 28px; border-radius: 2px;
-      font-size: 12px; font-weight: 700;
-      text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
-      align-self: flex-start;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-light:hover { background: var(--bg); transform: translateY(-1px); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #111827; padding: 28px 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
-    }
-
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.35); text-decoration: none; }
-
-    .footer-links { display: flex; gap: 24px; }
-
-    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
-
-    .footer-links a:hover { color: rgba(255,255,255,0.65); }
-
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
-
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      #home { grid-template-columns: 1fr; }
-      .hero-left { padding: 110px 24px 48px; }
-      .hero-right { min-height: 340px; padding: 36px; }
-      .section-wrap, .contact-wrap { padding: 64px 24px; }
-      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
-      footer { padding: 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
-    }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
+
   <nav>
     <a href="#home" class="nav-logo">Gabriel <span>Arjona</span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
+
   <section id="home">
     <div class="hero-left">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-line"></div>
-        <div class="hero-eyebrow-text">Technology &amp; Engineering</div>
+        <div class="hero-eyebrow-text">Industrial Engineering &amp; Technology</div>
       </div>
       <h1>Who is<br><em>Gabriel</em><br>Arjona?</h1>
       <p class="hero-description">
-        Engineer focused on building data-driven solutions and robust systems. Passionate about technology, financial analytics, and turning complexity into clarity.
+        Industrial Engineer finishing his degree at the University of Málaga, with hands-on experience in logistics operations, automation systems, and financial analytics. Passionate about technology, industrial efficiency, and data-driven decision making.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn-primary">View my work &rarr;</a>
+        <a href="#experience" class="btn-primary">View my experience &rarr;</a>
         <a href="#contact" class="btn-outline">Get in touch</a>
       </div>
     </div>
@@ -531,24 +212,24 @@
       <div class="hero-glow"></div>
       <div class="hero-card">
         <div class="hero-card-label">Profile</div>
-        <div class="hero-card-name">Gabriel Arjona</div>
-        <div class="hero-card-title">Technology &amp; Engineering Professional</div>
+        <div class="hero-card-name">Gabriel Manuel Arjona</div>
+        <div class="hero-card-title">Industrial Engineering &mdash; University of Málaga, Final Year</div>
         <div class="hero-card-stats">
           <div class="hero-stat">
             <div class="hero-stat-num">BMC</div>
             <div class="hero-stat-label">Bloomberg Certified</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">3+</div>
-            <div class="hero-stat-label">Years Experience</div>
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label">Int'l Roles Held</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">FinTech</div>
-            <div class="hero-stat-label">Domain Focus</div>
+            <div class="hero-stat-num">C1</div>
+            <div class="hero-stat-label">English — Aptis Cert.</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">MEX</div>
-            <div class="hero-stat-label">Based in Mexico</div>
+            <div class="hero-stat-num">ESP</div>
+            <div class="hero-stat-label">Based in Málaga</div>
           </div>
         </div>
         <div class="hero-badge">Open to opportunities</div>
@@ -557,6 +238,7 @@
   </section>
 
   <!-- ABOUT -->
+
   <div id="about" style="background:var(--white);">
     <div class="section-wrap">
       <div class="section-header reveal">
@@ -568,30 +250,30 @@
       </div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <p>I'm a technology and engineering professional with a strong foundation in <strong>data analysis, financial technology, and systems thinking</strong>. I thrive at the intersection of technical precision and business impact.</p>
-          <p>My background combines formal engineering education with hands-on experience in <strong>building analytical tools, automating workflows</strong>, and working with financial data — including Bloomberg certifications that ground my work in real-world market dynamics.</p>
-          <p>I'm driven by the belief that well-engineered solutions don't just solve problems — they create lasting value. Whether it's a data pipeline or a product feature, I bring rigor and clarity to every layer of the stack.</p>
+          <p>I'm a final-year <strong>Industrial Engineering student at the University of Málaga</strong>, specialising in Industrial Organisation and Automation, with a personal focus on finance and banking. I thrive at the intersection of engineering rigour and real-world operational challenges.</p>
+          <p>Over the past few years I have built hands-on experience across <strong>international logistics operations in the Netherlands</strong>, working with AGV automation systems, inventory management software, and large-scale supply chains at companies such as JD Logistics, Syncreon, and Clipper Logistics.</p>
+          <p>Beyond operations, I hold a <strong>Bloomberg Market Concepts certification</strong> and have interviewed with firms such as JP Morgan for summer analyst positions in risk and financial analysis — reflecting my commitment to bridging engineering with finance. I am a problem-solver by training and a team player by nature, comfortable operating under pressure in multicultural environments.</p>
         </div>
         <div class="about-aside reveal">
           <div class="about-aside-item">
-            <div class="about-aside-label">Specialization</div>
-            <div class="about-aside-value">Technology &amp; Engineering</div>
+            <div class="about-aside-label">Degree</div>
+            <div class="about-aside-value">Grado en Ingeniería en Tecnologías Industriales<br><small>University of Málaga · 2021–2026</small></div>
           </div>
           <div class="about-aside-item">
-            <div class="about-aside-label">Domain Focus</div>
-            <div class="about-aside-value">FinTech &amp; Data Analytics</div>
+            <div class="about-aside-label">Specialisation</div>
+            <div class="about-aside-value">Industrial Organisation &amp; Automation</div>
           </div>
           <div class="about-aside-item">
-            <div class="about-aside-label">Education</div>
-            <div class="about-aside-value">Engineering Degree<br><span style="font-size:13px;color:var(--muted);font-weight:400;">University Name</span></div>
+            <div class="about-aside-label">Location</div>
+            <div class="about-aside-value">Málaga, Spain</div>
           </div>
           <div class="about-aside-item">
             <div class="about-aside-label">Languages</div>
-            <div class="about-aside-value">Spanish (Native) &middot; English (Fluent)</div>
+            <div class="about-aside-value">Spanish (Native) · English C1 · Dutch (Intermediate)</div>
           </div>
           <div class="about-aside-item">
-            <div class="about-aside-label">Email</div>
-            <div class="about-aside-value" style="font-size:13px;">whoisgabrielarjona@gmail.com</div>
+            <div class="about-aside-label">Contact</div>
+            <div class="about-aside-value"><small>whoisgabrielarjona@gmail.com</small></div>
           </div>
         </div>
       </div>
@@ -599,6 +281,7 @@
   </div>
 
   <!-- EXPERIENCE -->
+
   <div id="experience" style="background:var(--bg);">
     <div class="section-wrap">
       <div class="section-header reveal">
@@ -609,170 +292,233 @@
         <div class="section-num">02</div>
       </div>
       <div class="timeline reveal">
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-date">2023 — Present</div>
-            <div class="timeline-badge">Current</div>
-          </div>
-          <div>
-            <div class="timeline-role">Technology / Engineering Role</div>
-            <div class="timeline-company">Company Name &middot; Full-time</div>
-            <div class="timeline-desc">Brief description of your responsibilities, technologies used, and key achievements. What did you build? What impact did it have? Replace this with your actual experience.</div>
-          </div>
+
+```
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-date">Jul 2025 — Oct 2025</div>
+        <div class="timeline-badge">Most Recent</div>
+      </div>
+      <div>
+        <div class="timeline-role">Inbound Operator — AGV Systems</div>
+        <div class="timeline-company">JD Logistics (Jingdong) &middot; Venray, Netherlands</div>
+        <div class="timeline-desc">Managed the operational control of Automated Guided Vehicles (AGVs) within a global-scale logistics network. Responsible for monitoring and optimising intelligent material-handling systems to sustain high-throughput inbound supply chain operations. Worked daily with JD's proprietary warehouse management software (AWS-based), gaining deep exposure to large-scale automation and smart logistics infrastructure.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-date">Sep 2022 — Nov 2022</div>
+      </div>
+      <div>
+        <div class="timeline-role">Logistics Operator &amp; Plant Administrator</div>
+        <div class="timeline-company">Syncreon &middot; Venray, Netherlands</div>
+        <div class="timeline-desc">Focused on deepening knowledge of end-to-end supply chain operations and how companies apply tailored techniques to maximise efficiency. Resolved daily operational issues across stock control and order-picking departments using proprietary internal management software, acting as a key liaison between plant floor and administration.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-date">Jul 2022 — Sep 2022</div>
+      </div>
+      <div>
+        <div class="timeline-role">Logistics Operator</div>
+        <div class="timeline-company">Clipper Logistics PLC &middot; Venray, Netherlands</div>
+        <div class="timeline-desc">Began international logistics career learning the full supply chain cycle from goods reception to final dispatch. Worked in inventory control reviewing stock accuracy and played a central role in the order-picking (EPT) area, developing operational agility and attention to detail in a high-volume warehouse environment.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-date">Jan 2022 — Apr 2022</div>
+      </div>
+      <div>
+        <div class="timeline-role">Substitute English Teacher</div>
+        <div class="timeline-company">Kids &amp; Us &middot; Málaga, Spain</div>
+        <div class="timeline-desc">Taught English to children and young people aged 5–18 at one of Spain's leading English-language academies, at just 19 years old. Developed communication, adaptability, and classroom management skills while strengthening C1-level English proficiency in a professional setting.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- EDUCATION -->
+
+  <div id="education" style="background:var(--white);">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <div>
+          <div class="section-label">Education</div>
+          <div class="section-title">Academic<br>Background</div>
         </div>
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-date">2021 — 2023</div>
-          </div>
-          <div>
-            <div class="timeline-role">Previous Role</div>
-            <div class="timeline-company">Company Name &middot; Full-time</div>
-            <div class="timeline-desc">Description of this role. Replace these with your actual experience. Mention key projects, tools used, and measurable outcomes.</div>
-          </div>
+        <div class="section-num">03</div>
+      </div>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <div class="edu-years">2021 — 2026</div>
+          <div class="edu-degree">Grado en Ingeniería en Tecnologías Industriales</div>
+          <div class="edu-school">Universidad de Málaga &middot; Málaga, Spain</div>
+          <div class="edu-desc">Final year. Specialisation in Industrial Organisation and Automation. Personal focus on finance and banking. Interviewed with JP Morgan for summer analyst roles in risk analysis and financial analysis.</div>
         </div>
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-date">2019 — 2021</div>
-          </div>
-          <div>
-            <div class="timeline-role">Early Career / Internship</div>
-            <div class="timeline-company">University or Company &middot; Internship</div>
-            <div class="timeline-desc">What you learned and contributed early in your career. Projects completed, skills developed, and foundations built.</div>
-          </div>
+        <div class="edu-card">
+          <div class="edu-years">2019 — 2021</div>
+          <div class="edu-degree">Bachillerato — Science &amp; Technology</div>
+          <div class="edu-school">IES Juan de Aréjula &middot; Lucena, Córdoba</div>
+          <div class="edu-desc">STEM-focused curriculum including pre-calculus mathematics, physics, technical drawing, electronics, and programming.</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-years">2015 — 2019</div>
+          <div class="edu-degree">Educación Secundaria Obligatoria (ESO)</div>
+          <div class="edu-school">IES Miguel de Cervantes &middot; Lucena, Córdoba</div>
+          <div class="edu-desc">Secondary education with a broad academic foundation across sciences, humanities, and technology.</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-years">2012 — 2015</div>
+          <div class="edu-degree">Music Scholarship — Piano, Violin &amp; Voice</div>
+          <div class="edu-school">Escolanía del Real Monasterio de El Escorial &middot; Madrid</div>
+          <div class="edu-desc">Awarded a scholarship at one of Spain's most prestigious music schools. Trained in piano, violin, and choral singing as a member of the Royal Choir of El Escorial.</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- SKILLS -->
-  <div id="skills" style="background:var(--white);">
+
+  <div id="skills" style="background:var(--bg);">
     <div class="section-wrap">
       <div class="section-header reveal">
         <div>
           <div class="section-label">Skills</div>
           <div class="section-title">Technical<br>Toolkit</div>
         </div>
-        <div class="section-num">03</div>
+        <div class="section-num">04</div>
       </div>
       <div class="skills-grid reveal">
-        <div class="skill-category">
-          <div class="skill-cat-icon">💻</div>
-          <div class="skill-cat-title">Programming & Data</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">NumPy</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">R</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <div class="skill-cat-icon">📊</div>
-          <div class="skill-cat-title">Finance & Analytics</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Bloomberg Terminal</span>
-            <span class="skill-tag">Financial Modeling</span>
-            <span class="skill-tag">Data Visualization</span>
-            <span class="skill-tag">Excel / VBA</span>
-            <span class="skill-tag">Power BI</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <div class="skill-cat-icon">⚙️</div>
-          <div class="skill-cat-title">Engineering & Tools</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">REST APIs</span>
-            <span class="skill-tag">Cloud (GCP/AWS)</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <div class="skill-cat-icon">🤝</div>
-          <div class="skill-cat-title">Soft Skills</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Problem Solving</span>
-            <span class="skill-tag">Communication</span>
-            <span class="skill-tag">Project Management</span>
-            <span class="skill-tag">Analytical Thinking</span>
-          </div>
-        </div>
+
+```
+    <div class="skill-category">
+      <div class="skill-cat-icon">💻</div>
+      <div class="skill-cat-title">Programming</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Python</span>
+        <span class="skill-tag highlight">C++</span>
+        <span class="skill-tag highlight">SQL</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Git / GitHub</span>
       </div>
-      <div class="cert-table reveal">
-        <div class="section-label" style="margin-bottom:16px;">Certifications</div>
-        <div class="cert-row">
-          <div class="cert-num">01</div>
-          <div>
-            <div class="cert-name">Bloomberg Market Concepts (BMC)</div>
-            <div class="cert-issuer">Bloomberg for Education &middot; 2023</div>
-          </div>
-          <a href="https://portal.bloombergforeducation.com/certificates/YYQCA3mbRaAXHEsNHM8kp3bS" target="_blank" class="cert-link">View &rarr;</a>
-        </div>
-        <div class="cert-row">
-          <div class="cert-num">02</div>
-          <div>
-            <div class="cert-name">Add your other certifications here</div>
-            <div class="cert-issuer">Issuer &middot; Year</div>
-          </div>
-        </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-icon">🤖</div>
+      <div class="skill-cat-title">Automation &amp; Industrial Systems</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">PLC Programming (TwinCAT)</span>
+        <span class="skill-tag highlight">RobotStudio (ABB)</span>
+        <span class="skill-tag">AGV Systems</span>
+        <span class="skill-tag">Industrial Automation</span>
+        <span class="skill-tag">SCADA</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-icon">📊</div>
+      <div class="skill-cat-title">Data &amp; Finance</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Excel (Advanced)</span>
+        <span class="skill-tag highlight">Power BI</span>
+        <span class="skill-tag">Bloomberg Terminal</span>
+        <span class="skill-tag">Financial Modelling</span>
+        <span class="skill-tag">Data Visualisation</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-icon">🏭</div>
+      <div class="skill-cat-title">Operations &amp; Logistics</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">MRP Systems</span>
+        <span class="skill-tag">Supply Chain Management</span>
+        <span class="skill-tag">Inventory Control</span>
+        <span class="skill-tag">Warehouse Management</span>
+        <span class="skill-tag">Lean / Efficiency</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-icon">🌍</div>
+      <div class="skill-cat-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Spanish (Native)</span>
+        <span class="skill-tag highlight">English (C1 — Aptis)</span>
+        <span class="skill-tag">Dutch (Intermediate)</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-icon">🤝</div>
+      <div class="skill-cat-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">High-pressure Environments</span>
+        <span class="skill-tag">Cross-cultural Communication</span>
+        <span class="skill-tag">Project Management</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="cert-table reveal">
+    <div class="section-label" style="margin-bottom:16px;">Certifications &amp; Licences</div>
+    <div class="cert-row">
+      <div class="cert-num">01</div>
+      <div>
+        <div class="cert-name">Bloomberg Market Concepts (BMC)</div>
+        <div class="cert-issuer">Bloomberg for Education</div>
+      </div>
+      <a href="https://portal.bloombergforeducation.com/certificates/YYQCA3mbRaAXHEsNHM8kp3bS" target="_blank" class="cert-link">View &rarr;</a>
+    </div>
+    <div class="cert-row">
+      <div class="cert-num">02</div>
+      <div>
+        <div class="cert-name">Aptis English Certificate — C1</div>
+        <div class="cert-issuer">British Council</div>
+      </div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-num">03</div>
+      <div>
+        <div class="cert-name">Electric Pallet Truck (EPT) Licence</div>
+        <div class="cert-issuer">Professional Forklift Certification</div>
+      </div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-num">04</div>
+      <div>
+        <div class="cert-name">Driving Licence — Type B</div>
+        <div class="cert-issuer">Spain</div>
       </div>
     </div>
   </div>
+</div>
+```
 
-  <!-- PROJECTS -->
-  <div id="projects" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div class="section-header reveal">
-        <div>
-          <div class="section-label">Projects</div>
-          <div class="section-title">Selected<br>Work</div>
-        </div>
-        <div class="section-num">04</div>
-      </div>
-      <div class="projects-grid reveal">
-        <div class="project-card">
-          <div class="project-num">Project 01</div>
-          <div class="project-title">Financial Data Dashboard</div>
-          <div class="project-desc">A real-time analytics dashboard for monitoring market indicators, built with Python and integrated with Bloomberg data feeds. Visualizes trends and alerts on key signals.</div>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Bloomberg API</span>
-            <span class="project-tag">Plotly</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-num">Project 02</div>
-          <div class="project-title">Automation Pipeline</div>
-          <div class="project-desc">End-to-end automation of reporting workflows, reducing manual effort by 80%. Built modular scripts with error handling and logging for production reliability.</div>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">SQL</span>
-            <span class="project-tag">Cron</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-num">Project 03</div>
-          <div class="project-title">Your Project Here</div>
-          <div class="project-desc">Add a real project here. Describe the problem you solved, the approach, and the outcome. Replace this placeholder with actual work you've done.</div>
-          <div class="project-tags">
-            <span class="project-tag">Your Stack</span>
-            <span class="project-tag">Here</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- CONTACT -->
-  <div id="contact" id="contact-section" style="background:var(--navy);">
+
+  <div id="contact" style="background:var(--navy);">
     <div class="contact-wrap">
       <div class="contact-inner">
         <div class="reveal">
           <div class="contact-label">Contact</div>
           <div class="contact-title">Let's<br>Connect.</div>
-          <div class="contact-subtitle">Open to new opportunities, collaborations, and interesting conversations. If you have a project in mind or just want to connect — reach out.</div>
+          <div class="contact-subtitle">Open to internships, graduate opportunities, and interesting conversations about engineering, logistics, or finance. Reach out — I'm always happy to talk.</div>
           <div class="contact-links">
             <a href="mailto:whoisgabrielarjona@gmail.com" class="contact-link">
               <div class="contact-link-icon">✉</div>
@@ -782,46 +528,54 @@
               <div class="contact-link-icon">in</div>
               linkedin.com/in/gabrielarjona1
             </a>
+            <a href="https://whoisgabrielarjona.com" class="contact-link">
+              <div class="contact-link-icon">🌐</div>
+              whoisgabrielarjona.com
+            </a>
           </div>
         </div>
-        <div class="contact-form reveal">
+        <form class="contact-form reveal" action="https://formspree.io/f/xzdjpjgn" method="POST" id="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" placeholder="Your name">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="your@email.com">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
             </div>
           </div>
           <div class="form-group">
-            <label>Subject</label>
-            <input type="text" placeholder="What's this about?">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?">
           </div>
           <div class="form-group">
-            <label>Message</label>
-            <textarea rows="5" placeholder="Tell me more..."></textarea>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me more..." required></textarea>
           </div>
-          <a href="mailto:whoisgabrielarjona@gmail.com" class="btn-light">Send message &rarr;</a>
-        </div>
+          <button type="submit" class="btn-light" id="submit-btn">Send message &rarr;</button>
+          <div id="form-status" style="display:none; margin-top:12px; font-size:13px; font-weight:500;"></div>
+        </form>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
+
   <footer>
     <a href="#home" class="footer-logo">Gabriel Arjona</a>
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="footer-copy">&copy; 2026 &middot; whoisgabrielarjona.com</div>
   </footer>
 
   <script>
+    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -832,6 +586,43 @@
       });
     }, { threshold: 0.08 });
     reveals.forEach(el => io.observe(el));
+
+    // Formspree async submit
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.textContent = 'Sending...';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          status.style.display = 'block';
+          status.style.color = '#4ade80';
+          status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          form.reset();
+          btn.textContent = 'Message sent ✓';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        status.style.display = 'block';
+        status.style.color = '#f87171';
+        status.textContent = '✗ Something went wrong. Please email me directly.';
+        btn.textContent = 'Send message →';
+        btn.style.opacity = '1';
+        btn.disabled = false;
+      }
+    });
   </script>
 
 </body>
